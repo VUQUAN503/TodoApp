@@ -1,8 +1,8 @@
 <template>
-    <div class="job-item">
+    <div class="filter-job">
         <p>Filter:</p>
         <div class="form">
-            <input type="text" v-model="filter" name="" id="" @change="filterJobs">
+            <input type="text" v-model="filterName" name="" id="" @input="filterJob">
             <button @click="filterJob">Filter</button>
         </div>
     </div>
@@ -12,12 +12,12 @@
     export default {
         data() {
             return {
-                filter: ""
+                filterName: ""
             }
         },
         methods: {
-            filterJobs() {
-                this.filterName = this.filter;
+            filterJob() {
+                this.$emit('filterJobs', this.filterName)
             }
         }, 
         mounted() {
